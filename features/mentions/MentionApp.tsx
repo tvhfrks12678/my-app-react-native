@@ -28,7 +28,7 @@ export default function MentionApp() {
     keyword,
     onSuggestionPress,
   }) => {
-    if (keyword == null) {
+    if (keyword === null) {
       return null;
     }
 
@@ -50,11 +50,16 @@ export default function MentionApp() {
     );
   };
 
+  const dismissOnPress = () => {
+    Keyboard.dismiss();
+    console.log('================');
+  };
+
   const DismissKeyboard = ({ children }) => (
-    // <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-    //   {children}
-    // </TouchableWithoutFeedback>
-    <ScrollView>{children}</ScrollView>
+    <TouchableWithoutFeedback onPress={dismissOnPress}>
+      {children}
+    </TouchableWithoutFeedback>
+    // <ScrollView>{children}</ScrollView>
   );
 
   return (
