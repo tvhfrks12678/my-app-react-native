@@ -33,7 +33,7 @@ export default function MentionApp() {
     }
 
     return (
-      <View>
+      <View style={styles.pressMentionList}>
         {suggestions
           .filter((one) =>
             one.name.toLocaleLowerCase().includes(keyword.toLocaleLowerCase())
@@ -42,7 +42,7 @@ export default function MentionApp() {
             <Pressable
               key={one.id}
               onPress={() => onSuggestionPress(one)}
-              style={{ padding: 12 }}>
+              style={styles.pressMention}>
               <Text>{one.name}</Text>
             </Pressable>
           ))}
