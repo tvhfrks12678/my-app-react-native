@@ -7,18 +7,20 @@ import {
   View,
 } from 'react-native';
 import ControlledMentions from './features/mentions';
+import MentionApp from './features/mentions/MentionApp';
 
 export default function App() {
   return (
-    <>
-      <View style={styles.container}>
-        <ControlledMentions />
-        <View style={{ flex: 1 }}>
-          <Text>saaa Open up App.tsx to start working on your app!</Text>
-          <StatusBar style="auto" />
-        </View>
-      </View>
-    </>
+    <MentionApp />
+    // <>
+    //   <View style={styles.container}>
+    //     <ControlledMentions />
+    //     <View style={{ flex: 1 }}>
+    //       <Text>saaa Open up App.tsx to start working on your app!</Text>
+    //       <StatusBar style="auto" />
+    //     </View>
+    //   </View>
+    // </>
   );
 }
 
