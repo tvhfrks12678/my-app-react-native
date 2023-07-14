@@ -28,7 +28,7 @@ export default function MentionApp() {
     keyword,
     onSuggestionPress,
   }) => {
-    if (keyword === null) {
+    if (keyword == null) {
       return null;
     }
 
@@ -67,6 +67,7 @@ export default function MentionApp() {
       <View style={styles.container}>
         <Text>aaa</Text>
         <Text>bbbbs</Text>
+
         <MentionInput
           value={value}
           onChange={setValue}
@@ -79,6 +80,7 @@ export default function MentionApp() {
             },
           ]}
         />
+
         <TextInput style={styles.input} placeholder="email" />
         <TextInput style={styles.input} placeholder="password" />
       </View>
