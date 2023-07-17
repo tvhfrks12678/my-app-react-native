@@ -8,10 +8,12 @@ import {
 } from 'react-native';
 import ControlledMentions from './features/mentions';
 import MentionApp from './features/mentions/MentionApp';
+import OnSnapShot from './features/learnings/fireBase/onSnapshot';
 
 export default function App() {
   return (
-    <MentionApp />
+    <OnSnapShot />
+    // <MentionApp />
     // <>
     //   <View style={styles.container}>
     //     <ControlledMentions />
