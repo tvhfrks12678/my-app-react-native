@@ -7,17 +7,38 @@ export default function OnSnapShot() {
   const [first, setFirst] = useState<string>('');
   const [users, setUsers] = useState();
 
-  // useEffect(() => {
-  //   async function getUsers() {
-  //     const querySnapshot = await getDocs(collection(db, 'users'));
-  //     // setUsers(querySnapshot);
-  //     querySnapshot.forEach((doc) => {
-  //       console.log(`${doc.id} => ${doc.data()}`);
-  //     });
-  //   }
+  useEffect(() => {
+    async function getUsers() {
+      const querySnapshot = await getDocs(collection(db, 'users'));
+      // setUsers(querySnapshot);
+      let userList = [];
+      querySnapshot.forEach((doc) => {
+        console.log(`${doc.id} => ${doc.data()}`);
+        userList.push(doc.data());
+      });
+      setUsers(userList);
 
-  //   getUsers;
-  // });
+      console.log('%o', userList);
+    }
+
+    getUsers();
+  }, []);
+
+  function UserList() {
+    function Users() {
+      if (!users) {
+        return <></>;
+      }
+      return users.map((user) => <Text>{user.first}</Text>);
+    }
+
+    return (
+      <>
+        <Text>UserList</Text>
+        <Users />
+      </>
+    );
+  }
 
   async function onGetUsersPressed() {
     const querySnapshot = await getDocs(collection(db, 'users'));
@@ -59,6 +80,7 @@ export default function OnSnapShot() {
       <TouchableOpacity onPress={onPress}>
         <Text>onPress</Text>
       </TouchableOpacity>
+      <UserList />
     </>
   );
 }
