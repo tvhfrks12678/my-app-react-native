@@ -1,11 +1,33 @@
 import { Text, TextInput, TouchableOpacity } from 'react-native';
-
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, getDocs } from 'firebase/firestore';
 import { db } from '../../../../utils/firebaseConfig';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function OnSnapShot() {
   const [first, setFirst] = useState<string>('');
+  const [users, setUsers] = useState();
+
+  // useEffect(() => {
+  //   async function getUsers() {
+  //     const querySnapshot = await getDocs(collection(db, 'users'));
+  //     // setUsers(querySnapshot);
+  //     querySnapshot.forEach((doc) => {
+  //       console.log(`${doc.id} => ${doc.data()}`);
+  //     });
+  //   }
+
+  //   getUsers;
+  // });
+
+  async function onGetUsersPressed() {
+    const querySnapshot = await getDocs(collection(db, 'users'));
+    // setUsers(querySnapshot);
+    querySnapshot.forEach((doc) => {
+      console.log(`${doc.id} => ${doc.data()}`);
+      console.log('%o', doc.data());
+    });
+  }
+
   async function onPress() {
     console.log('onPresss');
     try {
@@ -31,6 +53,9 @@ export default function OnSnapShot() {
       <Text>First</Text>
       <TextInput value={first} onChangeText={setFirst} />
       <Text></Text>
+      <TouchableOpacity onPress={onGetUsersPressed}>
+        <Text>onGetUsersPressed</Text>
+      </TouchableOpacity>
       <TouchableOpacity onPress={onPress}>
         <Text>onPress</Text>
       </TouchableOpacity>
