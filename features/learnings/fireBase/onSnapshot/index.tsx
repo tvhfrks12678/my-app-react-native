@@ -3,6 +3,7 @@ import { collection, addDoc, getDocs } from 'firebase/firestore';
 import { db } from '../../../../utils/firebaseConfig';
 import { useEffect, useState } from 'react';
 import { useTimeLinePost } from '../../stores/timeLinePostState';
+import { useModalVisibility } from '../../stores/modalVisibilityState';
 
 export default function OnSnapShot() {
   const [first, setFirst] = useState<string>('');
@@ -76,6 +77,12 @@ export default function OnSnapShot() {
     }
   }
 
+  const { setIsModalVisible } = useModalVisibility('timeLinePostEditMenu');
+
+  function onModalPressed() {
+    setIsModalVisible(true);
+  }
+
   return (
     <>
       <Text></Text>
@@ -92,6 +99,9 @@ export default function OnSnapShot() {
       </TouchableOpacity>
       <TouchableOpacity onPress={onTimeLinePostPressed}>
         <Text>onTimeLinePostPressed</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={onModalPressed}>
+        <Text>onModalPressed</Text>
       </TouchableOpacity>
       <UserList />
     </>

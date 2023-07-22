@@ -1,24 +1,28 @@
 import React, { useState } from 'react';
 import { Alert, Modal, StyleSheet, Text, Pressable, View } from 'react-native';
+import { useModalVisibility } from '../stores/modalVisibilityState';
 
 export default function RecoilModal() {
-  const [modalVisible, setModalVisible] = useState(false);
+  // const [modalVisible, setModalVisible] = useState(false);
+  const { isModalVisible, setIsModalVisible } = useModalVisibility(
+    'timeLinePostEditMenu'
+  );
   return (
     <View style={styles.centeredView}>
       <Modal
         animationType="slide"
         transparent={true}
-        visible={modalVisible}
+        visible={isModalVisible}
         onRequestClose={() => {
           Alert.alert('Modal has been closed.');
-          setModalVisible(!modalVisible);
+          setIsModalVisible(!isModalVisible);
         }}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Hello World!</Text>
             <Pressable
               style={[styles.button, styles.buttonClose]}
-              onPress={() => setModalVisible(!modalVisible)}>
+              onPress={() => setIsModalVisible(!isModalVisible)}>
               <Text style={styles.textStyle}>Hide Modal</Text>
             </Pressable>
           </View>
@@ -26,7 +30,7 @@ export default function RecoilModal() {
       </Modal>
       <Pressable
         style={[styles.button, styles.buttonOpen]}
-        onPress={() => setModalVisible(true)}>
+        onPress={() => setIsModalVisible(true)}>
         <Text style={styles.textStyle}>Show Modal</Text>
       </Pressable>
     </View>
