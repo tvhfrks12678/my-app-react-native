@@ -1,5 +1,6 @@
 import { Text, TouchableOpacity } from 'react-native';
 import { useTimeLinePost } from '../stores/timeLinePostState';
+import RecoilModal from './modal';
 
 export default function RecoilLearning() {
   const { timeLinePost, setTimeLinePost } = useTimeLinePost();
@@ -19,6 +20,7 @@ export default function RecoilLearning() {
         <Text>Touch</Text>
       </TouchableOpacity>
       <Text>{timeLinePost?.message?.id}</Text>
+      <RecoilModal />
     </>
   );
 }
