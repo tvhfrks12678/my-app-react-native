@@ -1,7 +1,22 @@
 import { RecoilKeys } from './../../../utils/recoilKeys';
 import { atom, useRecoilState } from 'recoil';
 
-const initTimeLinePost = {
+type Message = {
+  id: number;
+  text: string;
+};
+
+type PageInfo = {
+  id: number;
+  fireStoreId: string;
+};
+
+type TimeLinePost = {
+  message: Message | null;
+  pageInfo: PageInfo | null;
+};
+
+const initTimeLinePost: TimeLinePost = {
   message: null,
   pageInfo: null,
 };

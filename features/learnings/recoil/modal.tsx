@@ -3,7 +3,6 @@ import { Alert, Modal, StyleSheet, Text, Pressable, View } from 'react-native';
 import { useModalVisibility } from '../stores/modalVisibilityState';
 
 export default function RecoilModal() {
-  // const [modalVisible, setModalVisible] = useState(false);
   const { isModalVisible, setIsModalVisible } = useModalVisibility(
     'timeLinePostEditMenu'
   );
