@@ -9,10 +9,18 @@ import {
 import ControlledMentions from './features/mentions';
 import MentionApp from './features/mentions/MentionApp';
 import OnSnapShot from './features/learnings/fireBase/onSnapshot';
+import RecoilLearning from './features/learnings/recoil';
+import { RecoilRoot } from 'recoil';
 
 export default function App() {
   return (
-    <OnSnapShot />
+    <>
+      <RecoilRoot>
+        <OnSnapShot />
+        <RecoilLearning />
+      </RecoilRoot>
+    </>
+
     // <MentionApp />
     // <>
     //   <View style={styles.container}>

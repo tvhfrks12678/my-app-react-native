@@ -2,10 +2,20 @@ import { Text, TextInput, TouchableOpacity } from 'react-native';
 import { collection, addDoc, getDocs } from 'firebase/firestore';
 import { db } from '../../../../utils/firebaseConfig';
 import { useEffect, useState } from 'react';
+import { useTimeLinePost } from '../../stores/timeLinePostState';
 
 export default function OnSnapShot() {
   const [first, setFirst] = useState<string>('');
   const [users, setUsers] = useState();
+  const { timeLinePost, setTimeLinePost } = useTimeLinePost();
+
+  function onTimeLinePostPressed() {
+    console.log('onTimeLinePostPressed');
+    setTimeLinePost({
+      message: { id: 456, text: 'Press' },
+      pageInfo: { id: 222, fireStoreId: 'def' },
+    });
+  }
 
   useEffect(() => {
     async function getUsers() {
@@ -35,6 +45,9 @@ export default function OnSnapShot() {
     return (
       <>
         <Text>UserList</Text>
+        <TouchableOpacity onPress={onPress}>
+          <Text>Touch</Text>
+        </TouchableOpacity>
         <Users />
       </>
     );
@@ -77,8 +90,8 @@ export default function OnSnapShot() {
       <TouchableOpacity onPress={onGetUsersPressed}>
         <Text>onGetUsersPressed</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={onPress}>
-        <Text>onPress</Text>
+      <TouchableOpacity onPress={onTimeLinePostPressed}>
+        <Text>onTimeLinePostPressed</Text>
       </TouchableOpacity>
       <UserList />
     </>
