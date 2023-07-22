@@ -15,7 +15,7 @@ export default function RecoilLearning() {
 
   return (
     <>
-      <Text>Recoil Learning</Text>
+      <Text>Recoil Learning !!!</Text>
       <TouchableOpacity onPress={onPress}>
         <Text>Touch</Text>
       </TouchableOpacity>

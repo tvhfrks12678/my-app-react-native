@@ -1,7 +1,7 @@
 import { RecoilKeys } from './../../../utils/recoilKeys';
 // import { atomFamily, useRecoilState } from 'recoil';
 
-import { atomFamily, useRecoilState } from 'recoil';
+import { SetterOrUpdater, atomFamily, useRecoilState } from 'recoil';
 
 // 参考: Reactでモーダル実装のベストプラクティスを考えてみた - Qiita https://qiita.com/t-sugimoto/items/9c01477c8998a1072225
 
@@ -11,7 +11,12 @@ const ModalVisibilityState = atomFamily({
   default: false,
 });
 
-export function useModalVisibility(modalType: ModalType) {
+type Response = {
+  isModalVisible: boolean;
+  setIsModalVisible: SetterOrUpdater<boolean>;
+};
+
+export function useModalVisibility(modalType: ModalType): Response {
   const [isModalVisible, setIsModalVisible] = useRecoilState(
     ModalVisibilityState(modalType)
   );
