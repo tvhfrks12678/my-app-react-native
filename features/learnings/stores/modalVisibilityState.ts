@@ -6,7 +6,7 @@ import { SetterOrUpdater, atomFamily, useRecoilState } from 'recoil';
 // 参考: Reactでモーダル実装のベストプラクティスを考えてみた - Qiita https://qiita.com/t-sugimoto/items/9c01477c8998a1072225
 
 export type ModalType = 'timeLinePostEditMenu' | 'timeLinePostDeleteConfirm';
-const ModalVisibilityState = atomFamily({
+const modalVisibilityState = atomFamily({
   key: RecoilKeys.MODAL_VISIBILITY_STATE,
   default: false,
 });
@@ -18,7 +18,7 @@ type Response = {
 
 export function useModalVisibility(modalType: ModalType): Response {
   const [isModalVisible, setIsModalVisible] = useRecoilState(
-    ModalVisibilityState(modalType)
+    modalVisibilityState(modalType)
   );
 
   return { isModalVisible, setIsModalVisible };

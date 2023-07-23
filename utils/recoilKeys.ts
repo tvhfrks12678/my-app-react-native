@@ -1,4 +1,5 @@
 export const RecoilKeys: { [key: string]: string } = {
   TIME_LINE_POST_STATE: 'timeLinePostState',
-  MODAL_VISIBILITY_STATE: 'ModalVisibilityState',
+  MODAL_VISIBILITY_STATE: 'modalVisibilityState',
+  CATEGORY_STATE: 'categoryState',
 };

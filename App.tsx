@@ -11,6 +11,7 @@ import MentionApp from './features/mentions/MentionApp';
 import OnSnapShot from './features/learnings/fireBase/onSnapshot';
 import RecoilLearning from './features/learnings/recoil';
 import { RecoilRoot } from 'recoil';
+import IfStringLiteral from './features/learnings/conditionalBranch';
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
       <RecoilRoot>
         <OnSnapShot />
         <RecoilLearning />
+        <IfStringLiteral status={'Reply'} />
       </RecoilRoot>
     </>
 
