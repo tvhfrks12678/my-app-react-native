@@ -13,15 +13,17 @@ import RecoilLearning from './features/learnings/recoil';
 import { RecoilRoot } from 'recoil';
 import IfStringLiteral from './features/learnings/conditionalBranch';
 import Compound from './features/learnings/conditionalBranch/compound';
+import FlatListSelectable from './features/learnings/flatList';
 
 export default function App() {
   return (
     <>
       <RecoilRoot>
-        <OnSnapShot />
+        {/* <OnSnapShot />
         <RecoilLearning />
         <IfStringLiteral status={'Reply'} />
-        <Compound isNew={true} />
+        <Compound isNew={true} /> */}
+        <FlatListSelectable />
       </RecoilRoot>
     </>
 
