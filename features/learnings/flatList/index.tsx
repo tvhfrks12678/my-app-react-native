@@ -79,10 +79,30 @@ const Item = ({ item, onPress, backgroundColor, textColor }: ItemProps) => (
   </TouchableOpacity>
 );
 
-const ItemOnPress = () => {};
+// const imageScrollViewRef = React.useRef(null);
+
+// // どこかのボタンなどから呼び出す
+// const scrollView = (dx) => {
+//     // 横スクロールならx、縦スクロールならyを指定
+//     imageScrollViewRef?.current?.scrollTo({
+//       x: dx
+//       y: 0,
+//       animated: true,
+//     });
+// }
+
+// // 操作対象
+// <ScrollView
+//   ref={imageScrollViewRef}
 
 const FlatListSelectable = () => {
   const [selectedId, setSelectedId] = useState<string>();
+  const flatListRef = React.useRef(null);
+
+  const ItemOnPress = () => {
+    console.log('ItemOnPress');
+    flatListRef?.current?.scrollToOffset({ y: 0, animated: true });
+  };
 
   const renderItem = ({ item }: { item: ItemData }) => {
     const backgroundColor = item.id === selectedId ? '#6e3b6e' : '#f9c2ff';
@@ -91,7 +111,7 @@ const FlatListSelectable = () => {
     return (
       <Item
         item={item}
-        onPress={() => setSelectedId(item.id)}
+        onPress={ItemOnPress}
         backgroundColor={backgroundColor}
         textColor={color}
       />
@@ -105,6 +125,7 @@ const FlatListSelectable = () => {
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
         extraData={selectedId}
+        ref={flatListRef}
       />
     </SafeAreaView>
   );
