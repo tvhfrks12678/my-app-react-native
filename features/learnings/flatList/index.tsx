@@ -79,29 +79,16 @@ const Item = ({ item, onPress, backgroundColor, textColor }: ItemProps) => (
   </TouchableOpacity>
 );
 
-// const imageScrollViewRef = React.useRef(null);
-
-// // どこかのボタンなどから呼び出す
-// const scrollView = (dx) => {
-//     // 横スクロールならx、縦スクロールならyを指定
-//     imageScrollViewRef?.current?.scrollTo({
-//       x: dx
-//       y: 0,
-//       animated: true,
-//     });
-// }
-
-// // 操作対象
-// <ScrollView
-//   ref={imageScrollViewRef}
-
 const FlatListSelectable = () => {
   const [selectedId, setSelectedId] = useState<string>();
   const flatListRef = React.useRef(null);
 
   const ItemOnPress = () => {
     console.log('ItemOnPress');
-    flatListRef?.current?.scrollToOffset({ y: 0, animated: true });
+    // flatListRef?.current?.scrollToOffset({ y: 0, animated: true });
+    flatListRef?.current?.scrollToOffset({ offset: 0, animated: true });
+    // flatListRef?.current?.scrollToEnd();
+    // flatListRef?.current?.scrollToIndex(index: 5);
   };
 
   const renderItem = ({ item }: { item: ItemData }) => {
